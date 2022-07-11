@@ -13,9 +13,11 @@ integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxV
 crossorigin="anonymous"></script>
   <style>
   .flip {
-  width: 200px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   perspective: 1100px;
+    text-align: center;
+    vertical-align:center;
 }
 
 .card {
@@ -34,11 +36,11 @@ crossorigin="anonymous"></script>
   }
 
   .front {
-    background: red;
+    background: ivory;
   }
 
   .back {
-    background: royalblue;
+    background: ivory;
     transform: rotateY(180deg);
   }
 
@@ -61,6 +63,9 @@ crossorigin="anonymous"></script>
     align-items: center;
     justify-content: center;
   }
+  .card_zone{
+    display: flex;flex-direction: row;justify-content: space-around
+  }
   </style>
 
   <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
@@ -68,15 +73,56 @@ crossorigin="anonymous"></script>
 
 <body>
 <div class="mytitle"></div>
-<div class="flip">
+<div class="card_zone">
+<div class="flip" style="margin: 30px;">
   <div class="card front" style="width: 18rem;">
     <div class="card-body">
-      <div><img src="https://image.yes24.com/goods/102347474/XL" style="width: 100px; height: 100px"></div>
-      <h5 class="card-title">Card title</h5>
+      <div><img src="http://image.kyobobook.co.kr/images/book/large/716/l9788901260716.jpg" style="width: 200px; height: 200px"></div>
+      <h5 class="card-title">역행자</h5>
     </div>
-    <div class="back">아무것도 없는 책</div>
+    <div class="back" style="text-align: center">역행자</div>
   </div>
 </div>
-</body>
+
+<div class="flip" style="margin: 30px">
+  <div class="card front" style="width: 18rem;">
+    <div class="card-body">
+      <div><img src="http://image.kyobobook.co.kr/images/book/large/225/l9791191114225.jpg" style="width: 200px; height: 200px"></div>
+      <h5 class="card-title">작별인사</h5>
+    </div>
+    <div class="back" style="text-align: center">작별인사</div>
+  </div>
+</div>
+
+<div class="flip" style="margin: 30px">
+  <div class="card front" style="width: 18rem;">
+    <div class="card-body">
+      <div><img src="http://image.kyobobook.co.kr/images/book/large/188/l9791161571188.jpg" style="width: 200px; height: 200px"></div>
+      <h5 class="card-title">불편한 편의점(40만부 기념 벚꽃 에디션)</h5>
+    </div>
+    <div class="back" style="text-align: center">불편한 편의점(40만부 기념 벚꽃 에디션)</div>
+  </div>
+</div>
+
+<div class="flip" style="margin: 30px">
+  <div class="card front" style="width: 18rem;">
+    <div class="card-body">
+      <div><img src="http://image.kyobobook.co.kr/images/book/large/661/l9791190977661.jpg" style="width: 200px; height: 200px"></div>
+      <h5 class="card-title">인플레이션에서 살아남기</h5>
+    </div>
+    <div class="back" style="text-align: center">인플레이션에서 살아남기</div>
+  </div>
+</div>
+
+  <div class="flip" style="margin: 30px">
+  <div class="card front" style="width: 18rem;">
+    <div class="card-body">
+      <div><img src="http://image.kyobobook.co.kr/images/book/large/127/l9791196617127.jpg" style="width: 200px; height: 200px"></div>
+      <h5 class="card-title">기분을 관리하면 인생이 관리된다 </h5>
+    </div>
+    <div class="back" style="text-align: center">인플레이션에서 살아남기</div>
+  </div>
+</div>
+</div></body>
 
 </html>
