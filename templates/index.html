@@ -12,9 +12,12 @@ integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLAS
 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 crossorigin="anonymous"></script>
   <style>
+    *{
+      font-size: 14px;
+    }
   .flip {
   width: 300px;
-  height: 300px;
+  height: 330px;
   perspective: 1100px;
     text-align: center;
     vertical-align:center;
@@ -63,6 +66,7 @@ crossorigin="anonymous"></script>
   .card_zone{
     display: flex;flex-direction: row; flex-wrap: wrap;
   }
+
   </style>
   <script>
     $(document).ready(function () {
@@ -89,7 +93,7 @@ let rows = response['books']
     <div class="card-body">
       <div><img src="${img}" style="width: 200px; height: 200px"></div>
       <h5 class="card-title" style="margin-top: 20px">${title}</h5>
-      <span onclick="heart">🤍</span>
+      <span onclick="heart" style="display:flex;justify-content: end">🤍</span>
     </div>
   </div>
 
@@ -102,7 +106,7 @@ let rows = response['books']
     <div class="card-body">
       <div><img src="${img}" style="width: 200px; height: 200px"></div>
       <h5 class="card-title" style="margin-top: 20px">${title}</h5>
-      <span onclick="heart">❤️</span>
+      <span onclick="heart" style="display:flex;justify-content: end">❤️</span>
     </div>
   </div>
 

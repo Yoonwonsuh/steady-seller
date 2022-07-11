@@ -15,7 +15,7 @@ soup = BeautifulSoup(data.text, 'html.parser')
 
 
 books = soup.select('#main_contents > ul > li')
-for book in books:
+for book in books[:20]:
     title = book.select_one('div.detail > div.title > a > strong').text
     img = book.select_one('div.cover > a > img')['src']
     rank = book.select_one('div.cover > a > strong').text
