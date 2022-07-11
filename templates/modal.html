@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+
+            .modal {
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                width: 100%;
+                height: 100%;
+
+                display: none;
+
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+
+            .modal.show {
+                display: block;
+            }
+
+            .modal_body {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+
+                width: 600px;
+                height: 400px;
+
+                padding: 40px;
+
+                text-align: center;
+
+                background-color: rgb(255, 255, 255);
+                border-radius: 10px;
+                box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            .bookimg {
+                float: left;
+                width: 200px;
+                height: 300px;
+            }
+
+            .input-box {
+                width: 300px;
+                float: right;
+
+            }
+
+            .comment-box {
+                float: right;
+                width: 300px;
+            }
+
+            input.btn-close-popup {
+                position: absolute;
+                top: 70%;
+                left: 73%;
+                background: url("../images/X-button.png") no-repeat;
+                border: none;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                background-position: center;
+                background-size: cover;
+                opacity: 0.5;
+            }
+        </style>
+
+    </head>
+<body>
+<div class="modal">
+    <div class="modal_body">
+        <img src="https://bookthumb-phinf.pstatic.net/cover/224/859/22485918.jpg?type=m140&udate=20220706"
+             class="bookimg" alt="...">
+        <p>역행자</p>
+        <p>자청(기업인)저 / 웅진지식하우스</p>
+        <p>
+        <div class="input-box">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="comment 입력 하세요" aria-label="comment 입력 하세요"
+                       aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">등록</button>
+                </div>
+            </div>
+        </div>
+        </p>
+        <div class="comment-box">
+            <table class="table">
+                <tr>
+                    <th scope="col">닉네임</th>
+                    <th scope="col">코멘트</th>
+                </tr>
+                <tr>
+                    <td>서윤원</td>
+                    <td>아주 재미있는 책이였어요!</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <input type="button" class="btn-close-popup">
+
+</div>
+<button class="btn-open-popup">역행자</button>
+
+<script>
+    const modal = document.querySelector('.modal');
+    const btnOpenPopup = document.querySelector('.btn-open-popup');
+    const closeBtn = document.querySelector('.btn-close-popup');
+
+    btnOpenPopup.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    closeBtn.addEventListener("click", e => {
+        modal.style.display = "none";
+    });
+</script>
+
+
+</body>
+</html>
