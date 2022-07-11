@@ -88,7 +88,7 @@ let rows = response['books']
       let temp_html = ``
       if (done==0){temp_html = `
 <div class="flip" style="margin: 100px;">
-<strong class="rank">${rank}</strong>
+<strong class="rank" style="position: relative;right: 20px">${rank}</strong>
   <div class="card front" style="width: 18rem;">
     <div class="card-body">
       <div><img src="${img}" style="width: 200px; height: 200px"></div>
@@ -101,7 +101,7 @@ let rows = response['books']
       else{ temp_html = `
 
 <div class="flip" style="margin: 100px;">
-<strong class="rank">${rank}</strong>
+<strong class="rank" style="position: relative;right: 20px">${rank}</strong>
   <div class="card front" style="width: 18rem;">
     <div class="card-body">
       <div><img src="${img}" style="width: 200px; height: 200px"></div>
