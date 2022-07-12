@@ -78,6 +78,24 @@
         }
     </style>
     <script>
+        // 로그아웃 //
+
+        function logout() {
+            $.removeCookie('login', {path: '/'})
+            alert('로그아웃 되었습니다.!')
+            window.location.href = "/login"
+        }
+
+        // 코멘트 저장 //
+
+        function insert_comment() {
+            let insert = $('#input-comment').val()
+            if (insert) {
+            }
+            else {
+                alert("코멘트를 입력해 주세요")
+            }
+        }
 
     </script>
 
@@ -90,16 +108,17 @@
     <!-- Image and text -->
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img src="/../images/header-tree.png" width="30" height="30"
+            <img src="../images/header-tree.png" width="30" height="30"
                  class="d-inline-block align-top" alt="">
             BBTree
         </a>
         <div style="margin-left:fill;color:saddlebrown;margin-right: 10px;font-weight: bold;color:saddlebrown">
             <i class="fa-regular fa-user-circle" aria-hidden="true"></i> 님 &nbsp;&nbsp;&nbsp;&nbsp;
-            <a onclick="window.location.href = '/mypage'" style="font-weight: bold;color:saddlebrown"><i
+            <a onclick="window.location.href = '/mypage'" style="font-weight: bold;color:saddlebrown; cursor: pointer;"><i
                     class="fa-solid fa-book-open" aria-hidden="true"></i> MyPage &nbsp;&nbsp;&nbsp;</a>
-            <a onclick="logout()" style="font-weight: bold;color:saddlebrown"><i class="fa fa-sign-out"
-                                                                                 aria-hidden="true"></i>
+            <a onclick="logout()" style="font-weight: bold;color:saddlebrown; cursor: pointer;"><i
+                    class="fa fa-sign-out"
+                    aria-hidden="true"></i>
                 Logout</a>
         </div>
     </nav>
@@ -138,7 +157,7 @@
                         <textarea id="input-comment" class="form-control" placeholder="코멘트를 달아주세요"
                                   aria-label="코멘트를 달아주세요" aria-describedby="basic-addon2"></textarea>
                     <div class="input-group-append">
-                        <button id="post-comment" class="btn btn-white" type="button" onclick="create_comment()">
+                        <button id="post-comment" class="btn btn-white" type="button" onclick="insert_comment()">
                             등록<i class="fa-regular fa-hand-pointer"></i>
                         </button>
                     </div>
