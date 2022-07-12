@@ -13,24 +13,27 @@ data = requests.get('http://www.kyobobook.co.kr/bestSellerNew/bestseller.laf?ord
 
 soup = BeautifulSoup(data.text, 'html.parser')
 
-db.books.drop()
+
 books = soup.select('#main_contents > ul > li')
 for book in books[:20]:
     title = book.select_one('div.detail > div.title > a > strong').text
     img = book.select_one('div.cover > a > img')['src']
     rank = book.select_one('div.cover > a > strong').text
     done = 0
+    bid = book.select_one('div.detail > div.title > a')['href'].split('barcode=')[1]
 
     doc = {
         'title' : title, 'img' : img, 'rank' : rank,'done':done,
     }
     db.books.insert_one(doc)
+# all_users = list(db.users.find({},{'_id':False}))
 
 
 #main_contents > ul > li:nth-child(6) > div.detail > div.subtitle
 @app.route('/')
 def home():
-    return render_template('index.html')
+    all_books = list(db.books.find({}, {'_id': False}))
+    return render_template('index.html',bundle=all_books)
 
 @app.route("/books", methods=["POST"])
 def book_post():
