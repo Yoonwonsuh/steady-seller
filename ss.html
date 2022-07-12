@@ -9,9 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
-
+    <script src="https://kit.fontawesome.com/4dca26fd45.js" crossorigin="anonymous"></script>
     <title></title>
 </head>
 
@@ -19,6 +19,14 @@
     * {
         font-family: 'IBM Plex Sans KR', sans-serif;
     }
+     .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+         /*맨위로 고정*/
+        }
 
 
     body {
@@ -38,7 +46,7 @@
         background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MTNfMjE0%2FMDAxNjMxNTM3NTQxNjIx.mu2x9C8EdB7FrJcrCv5_DHJYe_vcPwZw2em3pr4DUAUg.nen_1Luc37qa4SK_oQG2_69-uQAGfNMMYVHaNtBnXmcg.JPEG.windysky70%2Ffce0f6027d2fcbbd232fddcd71873f03.jpg&type=sc960_832");
         background-size: auto;
 
-        top: 20px;
+        top: 150px;
         width: 1280px;
         height: 150px;
         display: flex;
@@ -55,7 +63,7 @@
     }
 
     .mycards {
-        margin: 150px auto 0px auto;
+        margin: 250px auto 0px auto;
         width: 95%;
         max-width: 1200px;
         text-align: center;
@@ -73,6 +81,10 @@
         margin-top: -90px;
     }
 
+    .col{
+        background-color: #fefcf8;
+        padding: 0px 0px;
+    }
 
 
 </style>
@@ -150,11 +162,10 @@
 
 </div>
 <div class="title">
-    <h1 class="titel_name"> 나의 베스트 셀러 <i class="fa-solid fa-book"></i></h1>
+    <h1 class="titel_name"> 나의 베스트 셀러 </i></h1>
 
 </div>
 <div class="main_text0">
-
     <div class="mycards">
         <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
             <div class="col">
@@ -169,6 +180,7 @@
                         <p  class="card-name">내 아이디 입니다.</p>
                         <div class="done" id="cardzone">
                             ❤
+                        </div>
                         </div>
                     </div>
                 </div>
