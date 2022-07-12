@@ -14,10 +14,12 @@
 
     <title></title>
 </head>
+
 <style>
     * {
         font-family: 'IBM Plex Sans KR', sans-serif;
     }
+
 
     body {
         padding: 0;
@@ -36,7 +38,7 @@
         background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MTNfMjE0%2FMDAxNjMxNTM3NTQxNjIx.mu2x9C8EdB7FrJcrCv5_DHJYe_vcPwZw2em3pr4DUAUg.nen_1Luc37qa4SK_oQG2_69-uQAGfNMMYVHaNtBnXmcg.JPEG.windysky70%2Ffce0f6027d2fcbbd232fddcd71873f03.jpg&type=sc960_832");
         background-size: auto;
 
-        top: -20px;
+        top: 20px;
         width: 1280px;
         height: 150px;
         display: flex;
@@ -53,7 +55,7 @@
     }
 
     .mycards {
-        margin: 100px auto 0px auto;
+        margin: 150px auto 0px auto;
         width: 95%;
         max-width: 1200px;
         text-align: center;
@@ -68,7 +70,6 @@
     .main_text0 {
         width: 100%;
         height: 601px;
-        background-color:tan;
         margin-top: -90px;
     }
 
@@ -101,14 +102,13 @@
 
                     let temp_html = ``
                     if (done == 0) {
-                        let temp_html =
-                            ` `
+                        let temp_html ='<div class="done" id="cardzone">
+
+                            </div>'
 
                     } else {
-                        teml_html = `
-                                 <div class="done" id="cardzone">
-                                     ❤
-                                    </div> `
+                        teml_html = ` <div class="done" id="cardzone">   ❤ </div> `
+
 
 
                         $('#cards-box').append(temp_html)
@@ -123,19 +123,19 @@
     }
 
 </script>
-<body>
+<body style="background-color:tan;">
 
 <header class="header">
     <!-- Image and text -->
-   <nav class="navbar navbar-light bg-light" style="height:100px">
+      <nav class="navbar navbar-light bg-light" style="height:100px">
         <a class="navbar-brand" href="#">
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiakeoou-plCXGsyA2KXRZXtgjAbZn9HQ7GAhc1lxXgYJoXSiRS6fEqSWFW-e6R6Os3REK7WxnHHPruJr1xpqaPNGYPbigEWMWr608TdyoP1jiG-D9vFec50JrDxw6VJOtKj7bTgk9pfsKwO2J-dMANNFSW7UA9ZIbNm9Zp7XfBZlI-CrQrgZaw-WP/s320/header-tree.png"
-                 width="30" height="30"
+                 width="50" height="50"
                  class="d-inline-block align-top" alt="">
-             <span style="font-size: 30px;">BBTree</span>
+              <span style="font-size: 40px; font-weight: 1000;">BBTree</span>
         </a>
         <div style="margin-left:fill;color:saddlebrown;margin-right: 10px;font-weight: bold;color:saddlebrown">
-            <i class="fa-regular fa-user-circle" aria-hidden="true"></i> 님 &nbsp;&nbsp;&nbsp;&nbsp;
+             <i class="fa-regular fa-user-circle" aria-hidden="true"></i> 님 &nbsp;&nbsp;&nbsp;&nbsp;
             <a onclick="window.location.href = '/mypage'" style="font-weight: bold;color:saddlebrown"><i
                     class="fa-solid fa-book-open" aria-hidden="true"></i> MyPage &nbsp;&nbsp;&nbsp;</a>
             <a onclick="logout()" style="font-weight: bold;color:saddlebrown"><i class="fa fa-sign-out"
