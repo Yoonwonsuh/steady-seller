@@ -9,8 +9,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!-- icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
 </head>
 <style>
+    * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+    }
     .signin {
         padding: 200px 0 200px;
         background-image:  url("/images/서점\ 사진.jpg");
@@ -59,6 +65,7 @@
         box-sizing: border-box;
         font-size: 14px;
     }
+    
     .signin__card form button{
         padding: 0;
         border: none;
@@ -73,6 +80,7 @@
     }
    
     .signin__card form span {
+        font-size: 14px;
         color: #3f4141;
         font-size: 16px;
         margin-bottom: 10px;
@@ -88,11 +96,14 @@
         padding: 10px;
         text-align: center;
         border-radius: 5px;
-        color: black;
+        color: #3f4141;
         line-height: 25px;
         text-decoration: none;
         border: 1px solid #ddd;
         cursor: pointer;
+    }
+    .member:hover{
+        text-decoration: underline;
     }
     .signin__card form p {
         font-size: 12px;
@@ -121,11 +132,11 @@
                     <input type="password" placeholder="비밀번호를 입력하세요." />
                     <button class="material-symbols-outlined" >check_circle</button>
                     <span for="idRemb">아이디 저장</span>
-                    <input type= "submit" value="로그인">
+                    <a class="member" href="./templates/index.html">로그인</a>
                     <p>
                         * 회원이 아니면
                     </p>
-                    <a class="member" href="javascript:void(0)">회원 가입</a>
+                    <a class="member" href="/member.html">회원 가입</a>
                 </form>
             </div>
         </section>
