@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 <style>
     .signin {
-        padding: 100px 0 150px;
+        padding: 200px 0 200px;
         background-image:  url("/images/서점\ 사진.jpg");
         background-repeat: no-repeat ;
         background-position: center;
@@ -25,6 +28,7 @@
     }
     .signin__card {
         width: 500px;
+        height: auto;
         margin: 0 auto;
         border-radius: 6px;
         background-color: #fefcf8;
@@ -42,11 +46,12 @@
         color:rgb(112, 62, 26);
     }
     .signin__card form {
-        padding: 30px 22px;
+        padding: 10px 22px;
     }
     .signin__card form input {
         width: 100%;
         margin-bottom: 12px;
+        margin-top: 10px;
         padding: 15px;
         border: 1px solid #ddd;
         border-radius: 4px;
@@ -54,24 +59,56 @@
         box-sizing: border-box;
         font-size: 14px;
     }
+    .signin__card form button{
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        size: 10px;
+        width: 25px;
+        font-size: 18px;
+    }
+    .signin__card form button:hover{
+        font-weight: 700;
+    }
+   
+    .signin__card form span {
+        color: #3f4141;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
     .member{
-        width: 100%;
-        margin-bottom: 12px;
-        padding: 15px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        outline: none;
-        box-sizing: border-box;
         font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: block;
+        width: 435px;
+        height: 25px;
+        background: #f0eeee;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        color: black;
+        line-height: 25px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        cursor: pointer;
     }
     .signin__card form p {
         font-size: 12px;
         color:rgb(112, 62, 26);
         text-align: center;
+        margin-top: 2px;
+        margin-bottom: 10px;
+        padding-top: 15px;
+        border-top: 1px solid #ddd;
     }
+   
+ 
     
 </style>
 <body>
+    <!-- login -->
     <div>
         <section class="signin">
             <h1>로그인</h1>
@@ -82,11 +119,13 @@
                 <form>
                     <input type="text" placeholder="아이디를 입력하세요." />
                     <input type="password" placeholder="비밀번호를 입력하세요." />
+                    <button class="material-symbols-outlined" >check_circle</button>
+                    <span for="idRemb">아이디 저장</span>
                     <input type= "submit" value="로그인">
                     <p>
                         * 회원이 아니면
                     </p>
-                    <a class="member" href="TEST.php">회원 가입</a>
+                    <a class="member" href="javascript:void(0)">회원 가입</a>
                 </form>
             </div>
         </section>
