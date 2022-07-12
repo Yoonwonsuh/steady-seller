@@ -15,6 +15,9 @@ crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/c1016c8ea3.js" crossorigin="anonymous"></script>
       <script src="https://kit.fontawesome.com/4dca26fd45.js" crossorigin="anonymous"></script>
   <style>
+      * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+    }
   .flip {
   width: 350px;
   height: 350px;
@@ -51,12 +54,6 @@ crossorigin="anonymous"></script>
   button:hover{cursor: pointer;
   transform: scale(1.3);}
 
-          * {
-            font-family: 'Nanum Pen Script', cursive;
-            font-family: 'Noto Sans KR', sans-serif;
-            font-family: 'Yeon Sung', cursive;
-              font-size: 14px;
-        }
           li {
     display: list-item;
     text-align: -webkit-match-parent;
@@ -82,10 +79,10 @@ let rows = response['books']
       let temp_html = ``
       if (done==0){temp_html = `
 <div class="flip" style="margin: 100px;">
-<strong class="rank" style="position: relative;right: 310px;font-size: 24px">${rank}</strong>
+<strong class="rank" style="position: relative;right: 320px;font-size: 24px">${rank}</strong>
   <div class="card front" style="width: 18rem;">
     <div class="card-body">
-      <span><img src="${img}" style="width: 200px; height: 200px; position: relative; right: 20px"></span>
+      <span><img src="${img}" style="width: 200px; height: 200px; position: relative; "></span>
       <h5 class="card-title" style="margin-top: 20px">${title}</h5>
 <button class="fa-regular fa-heart" style="color: red; border: none;background-color: white" onclick="done_heart(${rank})"></button>
     </div>
@@ -95,11 +92,11 @@ let rows = response['books']
       else{ temp_html = `
 
 <div class="flip" style="margin: 100px;">
-<strong class="rank" style="position: relative;right: 310px;font-size: 24px">${rank}</strong>
+<strong class="rank" style="position: relative;right: 320px;font-size: 24px">${rank}</strong>
   <div class="card front" style="width: 18rem;">
     <div class="card-body">
-      <div><img src="${img}" style="width: 200px; height: 200px; position: relative; right: 20px"></div>
-      <h5 class="card-title" style="margin-top: 20px">${title}</h5>
+      <div><img src="${img}" style="width: 200px; height: 200px; position: relative; "></div>
+      <h5 class="card-title" style="margin-top: 20px;">${title}</h5>
 <button class="fa-solid fa-heart" style="color: red; border: none;background-color: white" onclick="cancel_heart(${rank})"></button>
     </div>
   </div>
@@ -146,19 +143,23 @@ function cancel_heart(rank) {
 <body style="background-color:tan;">
 <header class="header">
     <!-- Image and text -->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light" style="height:100px">
         <a class="navbar-brand" href="#">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiakeoou-plCXGsyA2KXRZXtgjAbZn9HQ7GAhc1lxXgYJoXSiRS6fEqSWFW-e6R6Os3REK7WxnHHPruJr1xpqaPNGYPbigEWMWr608TdyoP1jiG-D9vFec50JrDxw6VJOtKj7bTgk9pfsKwO2J-dMANNFSW7UA9ZIbNm9Zp7XfBZlI-CrQrgZaw-WP/s320/header-tree.png" width="30" height="30"
+            <img src="[강인호] [오전 11:00] https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiakeoou-plCXGsyA2KXRZXtgjAbZn9HQ7GAhc1lxXgYJoXSiRS6fEqSWFW-e6R6Os3REK7WxnHHPruJr1xpqaPNGYPbigEWMWr608TdyoP1jiG-D9vFec50JrDxw6VJOtKj7bTgk9pfsKwO2J-dMANNFSW7UA9ZIbNm9Zp7XfBZlI-CrQrgZaw-WP/s320/header-tree.png" width="50" height="50"
                  class="d-inline-block align-top" alt="">
-            BBTree
+            <span style="font-size: 40px; font-weight: 1000;">BBTree</span>
         </a>
-        <div style="margin-left:fill;color:saddlebrown;margin-right: 10px;font-weight: bold;color:saddlebrown">
-            <i class="fa-regular fa-user-circle" aria-hidden="true"></i> 님 &nbsp;&nbsp;&nbsp;&nbsp;
-            <a onclick="window.location.href = '/mypage'" style="font-weight: bold;color:saddlebrown"><i
-                    class="fa-solid fa-book-open" aria-hidden="true"></i> MyPage &nbsp;&nbsp;&nbsp;</a>
-            <a onclick="logout()" style="font-weight: bold;color:saddlebrown"><i class="fa fa-sign-out"
-                                                                                 aria-hidden="true"></i>
-                Logout</a>
+        <div class="nvbar-size">
+            <div style="margin-left:fill;color:saddlebrown;margin-right: 10px;font-weight: bold;color:saddlebrown">
+                <i class="fa-regular fa-user-circle" aria-hidden="true"></i>{{ nickname }} 님 &nbsp;&nbsp;&nbsp;&nbsp;
+                <a onclick="window.location.href = '/mypage'"
+                   style="font-weight: bold;color:saddlebrown; cursor: pointer;"><i
+                        class="fa-solid fa-book-open" aria-hidden="true"></i> MyPage &nbsp;&nbsp;&nbsp;</a>
+                <a onclick="logout()" style="font-weight: bold;color:saddlebrown; cursor: pointer;"><i
+                        class="fa fa-sign-out"
+                        aria-hidden="true"></i>
+                    Logout</a>
+            </div>
         </div>
     </nav>
 </header>
