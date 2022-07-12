@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+</head>
+<style>
+    .signin {
+        padding: 200px 0 200px;
+        background-image:  url("/images/서점\ 사진.jpg");
+        background-repeat: no-repeat ;
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .signin h1 {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+    .signin__card {
+        width: 500px;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 6px;
+        background-color: #fefcf8;
+        box-shadow: 2px 2px 20px rgba(0,0,0,.3);
+        color: #555;
+    }
+    .signin__card h2 {
+        padding: 20px;
+        font-size: 25px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+    .signin__card h2 strong {
+        font-weight: 700;
+        color:rgb(112, 62, 26);
+    }
+    .signin__card form {
+        padding: 20px 22px;
+    }
+    .signin__card form input {
+        width: 100%;
+        margin-top: 7px;
+        margin-bottom: 15px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        outline: none;
+        box-sizing: border-box;
+        font-size: 14px;
+        
+    }
+    .member{
+        width: 100px;
+        margin-left: 95px;
+        text-align: center;
+        padding: 20px;
+        color: #555;
+        font-size: 15px;
+        line-height: 20px;
+        text-decoration: none ;
+    }
+    .member:hover{
+        text-decoration: underline;
+    }
+
+    .signin__card form p {
+        font-size: 12px;
+        color:rgb(112, 62, 26);
+        text-align: center;
+        margin-top: 2px;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+   
+ 
+    
+</style>
+<body>
+    <div>
+        <!-- Sign Up -->
+        <section class="signin">
+            <h1>회원가입</h1>
+            <div class="signin__card">
+                <h2>
+                    <strong>BBtree</strong> 
+                </h2>
+                <form>
+                    <input type="text" placeholder="아이디를 입력하세요." />
+                    <p>
+                        * 아이디는 1-15자의 영문과 숫자와 일부특수문자(._-)만 입력 가능합니다.
+                    </p>
+                    <input type="password" placeholder="비밀번호를 입력하세요." />
+                    <input type="password" placeholder="비밀번호를 재 입력하세요." />
+                    <p>
+                        * 영문과 숫자 조합의 8-20자의 비밀번호를 설정해주세요.<br>특수문자(!@#$%^&*)도 사용 가능합니다.
+                    </p>
+                    <input type="text" placeholder="닉네임을 입력하세요." />
+
+                   
+                    <a class="member" href="javascript:void(0)">회원가입</a>
+                    <a class="member 2" href="javascript:void(0)">취소</a>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
