@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBtree</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+    }
+    .signin {
+        padding: 260px 0 260px;
+        background-image:  url("https://images.pexels.com/photos/626986/pexels-photo-626986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+        background-repeat: no-repeat ;
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .signin h1 {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+    .signin__card {
+        width: 500px;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 6px;
+        background-color: #fefcf8;
+        box-shadow: 2px 2px 20px rgba(0,0,0,.3);
+        color: #555;
+    }
+    .signin__card h2 {
+        padding: 30px;
+        font-size: 18px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+    .signin__card h2 strong {
+        font-weight: 700;
+        color:rgb(112, 62, 26);
+    }
+    .signin__card form {
+        padding: 10px 22px;
+    }
+    .signin__card form input {
+        width: 100%;
+        margin-bottom: 12px;
+        margin-top: 10px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        outline: none;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+    
+    .signin__card form button{
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        size: 10px;
+        width: 25px;
+        font-size: 18px;
+    }
+    .signin__card form button:hover{
+        font-weight: 700;
+    }
+   
+    .signin__card form span {
+        font-size: 14px;
+        color: #3f4141;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .member{
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: block;
+        width: 435px;
+        height: 25px;
+        background: #f0eeee;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        color: #3f4141;
+        line-height: 25px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        cursor: pointer;
+    }
+    .member:hover{
+        text-decoration: underline;
+    }
+    .signin__card form p {
+        font-size: 12px;
+        color:rgb(112, 62, 26);
+        text-align: center;
+        margin-top: 2px;
+        margin-bottom: 10px;
+        padding-top: 15px;
+        border-top: 1px solid #ddd;
+    }
+</style>
+
+<script>
+    {% if msg %}
+    alert("{{ msg }}")
+    {% endif %}
+    // ['쿠키'라는 개념에 대해 알아봅시다]
+    // 로그인을 구현하면, 반드시 쿠키라는 개념을 사용합니다.
+    // 페이지에 관계없이 브라우저에 임시로 저장되는 정보입니다. 키:밸류 형태(딕셔너리 형태)로 저장됩니다.
+    // 쿠키가 있기 때문에, 한번 로그인하면 네이버에서 다시 로그인할 필요가 없는 것입니다.
+    // 브라우저를 닫으면 자동 삭제되게 하거나, 일정 시간이 지나면 삭제되게 할 수 있습니다.
+    function login() {
+    $.ajax({
+        type: "POST",
+        url: "/api/login",
+        data: {id_give: $('#userid').val(), pw_give: $('#userpw').val()},
+        success: function (response) {
+            if (response['result'] == 'success') {
+                // 로그인이 정상적으로 되면, 토큰을 받아옵니다.
+                // 이 토큰을 mytoken이라는 키 값으로 쿠키에 저장합니다.
+                $.cookie('mytoken', response['token']);
+
+                alert('로그인 완료!')
+                window.location.href = '/'
+            } else {
+                // 로그인이 안되면 에러메시지를 띄웁니다.
+                alert(response['msg'])
+            }
+        }
+    })
+    }
+
+</script>
+
+</>
+<body>
+    <!-- login -->
+    <div>
+        <section class="signin">
+            <h1>로그인</h1>
+            <div class="signin__card">
+                <h2>
+                    <strong>Welcome!</strong> BBtree에 오신 것을 환영합니다.
+                </h2>
+                <form>
+                    <input type="text" id="userid" aria-describedby="emailHelp" placeholder="아이디를 입력하세요." />
+                    <input type="password" id="userpw" placeholder="비밀번호를 입력하세요." />
+                    <button class="material-symbols-outlined" >check_circle</button>
+                    <span for="idRemb">아이디 저장</span>
+                    <a class="member" href="./templates/index.html">로그인</a>
+                    <p>
+                        * 회원이 아니면
+                    </p>
+                    <a class="member" href="/member.html">회원 가입</a>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
