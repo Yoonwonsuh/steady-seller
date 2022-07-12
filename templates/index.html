@@ -15,9 +15,27 @@ crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/c1016c8ea3.js" crossorigin="anonymous"></script>
       <script src="https://kit.fontawesome.com/4dca26fd45.js" crossorigin="anonymous"></script>
   <style>
-      * {
-        font-family: 'IBM Plex Sans KR', sans-serif;
-    }
+        * {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        .header span {
+            font-weight: 700;
+            font-size: 40px;
+        }
+
+        .nvbar-size {
+            font-size: 20px;
+        }
+
   .flip {
   width: 350px;
   height: 350px;
@@ -86,10 +104,12 @@ let rows = response['books']
 <div class="flip" style="margin: 100px;">
 <strong class="rank" style="position: relative;right: 320px;font-size: 24px">${rank}</strong>
   <div class="card front" style="width: 18rem;">
+  <button class="fa-regular fa-heart" style="color: red; border: none;background-color: white;width: 14px;position: relative;left: 210px" onclick="done_heart(${rank})"></button>
     <div class="card-body">
+
       <span><img src="${img}" style="height: 200px; position: relative; "></span>
       <h5 class="card-title" style="margin-top: 20px">${title}</h5>
-<button class="fa-regular fa-heart" style="color: red; border: none;background-color: white" onclick="done_heart(${rank})"></button>
+
     </div>
   </div>
 
@@ -99,10 +119,11 @@ let rows = response['books']
 <div class="flip" style="margin: 100px;">
 <strong class="rank" style="position: relative;right: 320px;font-size: 24px">${rank}</strong>
   <div class="card front" style="width: 18rem;">
+    <button class="fa-solid fa-heart" style="color: red; border: none;background-color: white;width: 14px;position: relative;left: 210px" onclick="cancel_heart(${rank})"></button>
     <div class="card-body">
       <div><img src="${img}" style="height: 200px; position: relative; "></div>
       <h5 class="card-title" style="margin-top: 20px;">${title}</h5>
-<button class="fa-solid fa-heart" style="color: red; border: none;background-color: white" onclick="cancel_heart(${rank})"></button>
+
     </div>
   </div>
 
@@ -145,15 +166,15 @@ function cancel_heart(rank) {
   <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
 </head>
 
-<body style="background-color:tan;">
+<body style="background-color:tan;padding-top: 100px">
 
-<header class="header">
+<header class="header" !im>
     <!-- Image and text -->
     <nav class="navbar navbar-light bg-light" style="height:100px">
         <a class="navbar-brand" href="#">
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiakeoou-plCXGsyA2KXRZXtgjAbZn9HQ7GAhc1lxXgYJoXSiRS6fEqSWFW-e6R6Os3REK7WxnHHPruJr1xpqaPNGYPbigEWMWr608TdyoP1jiG-D9vFec50JrDxw6VJOtKj7bTgk9pfsKwO2J-dMANNFSW7UA9ZIbNm9Zp7XfBZlI-CrQrgZaw-WP/s320/header-tree.png" width="50" height="50"
                  class="d-inline-block align-top" alt="">
-            <span class="header" >BBTree</span>
+            <span class="header" style="padding-left: 55px; padding-top: 22px">BBTree</span>
         </a>
         <div class="nvbar-size">
             <div style="margin-left:fill;color:saddlebrown;margin-right: 10px;font-weight: bold;color:saddlebrown">

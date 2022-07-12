@@ -13,7 +13,7 @@ data = requests.get('http://www.kyobobook.co.kr/bestSellerNew/bestseller.laf?ord
 
 soup = BeautifulSoup(data.text, 'html.parser')
 
-
+db.books.drop()
 books = soup.select('#main_contents > ul > li')
 for book in books[:20]:
     title = book.select_one('div.detail > div.title > a > strong').text
