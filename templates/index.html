@@ -82,7 +82,7 @@ let rows = response['books']
       let temp_html = ``
       if (done==0){temp_html = `
 <div class="flip" style="margin: 100px;">
-<strong class="rank" style="position: relative;right: 20px">${rank}</strong>
+<strong class="rank" style="position: relative;right: 310px;font-size: 24px">${rank}</strong>
   <div class="card front" style="width: 18rem;">
     <div class="card-body">
       <span><img src="${img}" style="width: 200px; height: 200px; position: relative; right: 20px"></span>
@@ -95,7 +95,7 @@ let rows = response['books']
       else{ temp_html = `
 
 <div class="flip" style="margin: 100px;">
-<strong class="rank" style="position: relative;right: 20px">${rank}</strong>
+<strong class="rank" style="position: relative;right: 310px;font-size: 24px">${rank}</strong>
   <div class="card front" style="width: 18rem;">
     <div class="card-body">
       <div><img src="${img}" style="width: 200px; height: 200px; position: relative; right: 20px"></div>
@@ -162,7 +162,7 @@ function cancel_heart(rank) {
         </div>
     </nav>
 </header>
-<div class="card_zone" id="cardzone" >
+<div class="card_zone" id="cardzone" style="margin-left: 150px" >
 
 </div>
 
