@@ -5,6 +5,9 @@ from pymongo import MongoClient
 client = MongoClient('mongodb+srv://test:sparta@cluster0.ziyis.mongodb.net/Cluster0?retryWrites=true&w=majority')
 db = client.dbsparta
 
+client = MongoClient('mongodb+srv://test:sparta@cluster0.kx1zt.mongodb.net/Cluster0?retryWrites=true&w=majority')
+db = client.dbsparta
+
 
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
 # 이 문자열은 서버만 알고있기 때문에, 내 서버에서만 토큰을 인코딩(=만들기)/디코딩(=풀기) 할 수 있습니다.
@@ -143,33 +146,29 @@ def api_valid():
         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
 
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+data = requests.get('http://www.kyobobook.co.kr/bestSellerNew/bestseller.laf?orderClick=d79', headers=headers)
 
-    client = MongoClient('mongodb+srv://test:sparta@cluster0.kx1zt.mongodb.net/Cluster0?retryWrites=true&w=majority')
-    db = client.dbsparta
+soup = BeautifulSoup(data.text, 'html.parser')
 
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    data = requests.get('http://www.kyobobook.co.kr/bestSellerNew/bestseller.laf?orderClick=d79', headers=headers)
+books = soup.select('#main_contents > ul > li')
+for book in books[:20]:
+    title = book.select_one('div.detail > div.title > a > strong').text
+    img = book.select_one('div.cover > a > img')['src']
+    rank = book.select_one('div.cover > a > strong').text
+    done = 0
+    bid = book.select_one('div.detail > div.title > a')['href'].split('barcode=')[1]
 
-    soup = BeautifulSoup(data.text, 'html.parser')
-
-    books = soup.select('#main_contents > ul > li')
-    for book in books[:20]:
-        title = book.select_one('div.detail > div.title > a > strong').text
-        img = book.select_one('div.cover > a > img')['src']
-        rank = book.select_one('div.cover > a > strong').text
-        done = 0
-        bid = book.select_one('div.detail > div.title > a')['href'].split('barcode=')[1]
-
-        doc = {
-            'title': title, 'img': img, 'rank': rank, 'done': done,
-        }
-        db.books.insert_one(doc)
+    doc = {
+        'title': title, 'img': img, 'rank': rank, 'done': done,
+    }
+    db.books.insert_one(doc)
 
 
-    # all_users = list(db.users.find({},{'_id':False}))
+# all_users = list(db.users.find({},{'_id':False}))
 
-    # main_contents > ul > li:nth-child(6) > div.detail > div.subtitle
+# main_contents > ul > li:nth-child(6) > div.detail > div.subtitle
 
 
 
