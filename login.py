@@ -55,7 +55,10 @@ def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 2f52ba90e33ead11e693d8725e64bd539040bc35
 @app.route('/register')
 def register():
     return render_template('register.html')
