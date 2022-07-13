@@ -95,6 +95,7 @@ url: '/books',
 data: {},
 success: function (response) {
 let rows = response['books']
+    console.log(rows)
     for (let i = 0;i<20;i++){
      let title = rows[i]['title']
       let rank = rows[i]['rank']
@@ -110,7 +111,7 @@ let rows = response['books']
   <button class="fa-regular fa-heart" style="color: red; border: none;background-color: white;width: 14px;position: relative;left: 210px" onclick="done_heart(${rank})"></button>
     <div class="card-body">
 
-      <span><img src="${img}" style="height: 200px; position: relative; "></span>
+      <span><a href="/bookDetail?bid=${bid}"><img src="${img}" style="height: 200px; position: relative; "></a></span>
       <h5 class="card-title" style="margin-top: 20px"><a href="/bookDetail?bid=${bid}" style="color: black; text-decoration: none">${title}</a></h5>
 
     </div>
@@ -124,7 +125,7 @@ let rows = response['books']
   <div class="card front" style="width: 18rem;">
     <button class="fa-solid fa-heart" style="color: red; border: none;background-color: white;width: 14px;position: relative;left: 210px" onclick="cancel_heart(${rank})"></button>
     <div class="card-body">
-      <div><img src="${img}" style="height: 200px; position: relative; "></div>
+      <div><a href="/bookDetail?bid=${bid}"><img src="${img}" style="height: 200px; position: relative; "></a></div>
       <h5 class="card-title" style="margin-top: 20px;"><a href="/bookDetail?bid=${bid}" style="color: black; text-decoration: none">${title}</a></h5>
 
     </div>
