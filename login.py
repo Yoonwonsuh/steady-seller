@@ -322,7 +322,7 @@ def create_comment():
     nickname_receive = request.form['nickname_give']
     bid_receive = request.form['bid_give']
     comment_receive = request.form['comment_give']
-
+  
     doc = {
         'userId': user_id_receive,
         'nickname': nickname_receive,
