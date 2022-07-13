@@ -32,8 +32,7 @@ for book in books[:20]:
 #main_contents > ul > li:nth-child(6) > div.detail > div.subtitle
 @app.route('/')
 def home():
-    all_books = list(db.books.find({}, {'_id': False}))
-    return render_template('index.html',bundle=all_books)
+    return render_template('index.html')
 
 @app.route("/books", methods=["POST"])
 def book_post():
