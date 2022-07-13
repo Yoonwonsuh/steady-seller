@@ -40,7 +40,7 @@ def home():
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.user.find_one({"id": payload['id']})
-        return render_template('index.html', nickname=user_info["nick"])
+        return render_template('login.html', nickname=user_info["nick"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
@@ -153,7 +153,7 @@ data = requests.get('http://www.kyobobook.co.kr/bestSellerNew/bestseller.laf?ord
 soup = BeautifulSoup(data.text, 'html.parser')
 
 books = soup.select('#main_contents > ul > li')
-for book in books[:20]:
+for book in books:
     title = book.select_one('div.detail > div.title > a > strong').text
     img = book.select_one('div.cover > a > img')['src']
     rank = book.select_one('div.cover > a > strong').text
@@ -161,7 +161,7 @@ for book in books[:20]:
     bid = book.select_one('div.detail > div.title > a')['href'].split('barcode=')[1]
 
     doc = {
-        'title': title, 'img': img, 'rank': rank, 'done': done,
+        'title': title, 'img': img, 'rank': rank, 'done': done, 'bid':bid
     }
     db.books.insert_one(doc)
 

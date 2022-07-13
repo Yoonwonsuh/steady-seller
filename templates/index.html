@@ -112,7 +112,7 @@ let rows = response['books']
     <div class="card-body">
 
       <span><a href="/bookDetail?bid=${bid}"><img src="${img}" style="height: 200px; position: relative; "></a></span>
-      <h5 class="card-title" style="margin-top: 20px"><a href="/bookDetail?bid=${bid}" style="color: black; text-decoration: none">${title}</a></h5>
+      <h5 class="card-title" style="margin-top: 20px"><a href="/bookDetail?bid${bid}" style="color: black; text-decoration: none">${title}</a></h5>
 
     </div>
   </div>
@@ -126,7 +126,7 @@ let rows = response['books']
     <button class="fa-solid fa-heart" style="color: red; border: none;background-color: white;width: 14px;position: relative;left: 210px" onclick="cancel_heart(${rank})"></button>
     <div class="card-body">
       <div><a href="/bookDetail?bid=${bid}"><img src="${img}" style="height: 200px; position: relative; "></a></div>
-      <h5 class="card-title" style="margin-top: 20px;"><a href="/bookDetail?bid=${bid}" style="color: black; text-decoration: none">${title}</a></h5>
+      <h5 class="card-title" style="margin-top: 20px;"><a href="/bookDetail?bid${bid}" style="color: black; text-decoration: none">${title}</a></h5>
 
     </div>
   </div>
