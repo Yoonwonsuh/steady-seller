@@ -29,10 +29,11 @@
         font-family: 'IBM Plex Sans KR', sans-serif;
     }
     .signin {
-        width: auto;
-        height: auto;
+        height: 1080px;
+        width: 1920px;
         padding: 250px 0 290px;
-        background-image:  url("https://images.pexels.com/photos/626986/pexels-photo-626986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+        background: url('https://images.pexels.com/photos/626986/pexels-photo-626986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover, rgba(0, 0, 0, 0.5);
+        background-blend-mode: multiply;
         background-repeat: no-repeat ;
         background-position: center;
         background-attachment: fixed;
@@ -201,7 +202,7 @@
                         * 회원이 아니면
                     </p>
                     <div>
-                    <button class="member" href="/register.html">회원 가입</button>
+                    <button class="member" onclick="toggle_sign_up()">회원 가입</button>
                     </div>
                 </div>
             </div>
