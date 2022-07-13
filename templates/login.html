@@ -94,7 +94,10 @@
         font-weight: 700;
     }
    
-    .signin__card div div button{
+    .signin__card div div button,
+    .signin__card div div a,
+    .member
+    {
         font-size: 14px;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -111,32 +114,17 @@
         border: 1px solid #ddd;
         cursor: pointer;
     }
+    .member:hover{
+        text-decoration: underline;
+    }
+    
     .signin__card div span {
         font-size: 14px;
         color: #3f4141;
         font-size: 16px;
         margin-bottom: 10px;
     }
-    .member{
-        font-size: 14px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        display: block;
-        width: 435px;
-        height: 25px;
-        background: #f0eeee;
-        padding: 10px;
-        text-align: center;
-        border-radius: 5px;
-        color: #3f4141;
-        line-height: 25px;
-        text-decoration: none;
-        border: 1px solid #ddd;
-        cursor: pointer;
-    }
-    .member:hover{
-        text-decoration: underline;
-    }
+    
     .signin__card div p {
         font-size: 12px;
         color:rgb(112, 62, 26);
@@ -202,7 +190,7 @@
                         * 회원이 아니면
                     </p>
                     <div>
-                    <button class="member" onclick="toggle_sign_up()">회원 가입</button>
+                        <a class="member" href="register">회원 가입</a>
                     </div>
                 </div>
             </div>
