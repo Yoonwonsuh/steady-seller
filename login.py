@@ -1,13 +1,14 @@
-from flask import Flask, render_template, request, jsonify,redirect,url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for
+
 app = Flask(__name__)
 
 from pymongo import MongoClient
+
 client = MongoClient('mongodb+srv://test:sparta@cluster0.ziyis.mongodb.net/Cluster0?retryWrites=true&w=majority')
 db = client.dbsparta
 
 client = MongoClient('mongodb+srv://test:sparta@cluster0.kx1zt.mongodb.net/Cluster0?retryWrites=true&w=majority')
 db = client.dbsparta
-
 
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
 # 이 문자열은 서버만 알고있기 때문에, 내 서버에서만 토큰을 인코딩(=만들기)/디코딩(=풀기) 할 수 있습니다.
@@ -31,6 +32,8 @@ import requests
 from bs4 import BeautifulSoup
 
 from pymongo import MongoClient
+
+
 #################################
 ##  HTML을 주는 부분             ##
 #################################
@@ -49,7 +52,6 @@ def home():
         return redirect(url_for("index", msg="메인 페이지 입니다."))
 
 
-
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
@@ -60,10 +62,22 @@ def login():
 def register():
     return render_template('register.html')
 
+
 @app.route('/index')
 def page():
-    return render_template('index.html')
+    token_receive = request.cookies.get('mytoken')
 
+    try:
+        # 로그인 정보
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info = db.user.find_one({"userId": payload["id"]})
+
+        return render_template("index.html", user_info=user_info)
+
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
 
 #################################
@@ -167,7 +181,7 @@ for book in books:
     bid = book.select_one('div.detail > div.title > a')['href'].split('barcode=')[1]
 
     doc = {
-        'title': title, 'img': img, 'rank': rank, 'done': done, 'bid':bid
+        'title': title, 'img': img, 'rank': rank, 'done': done, 'bid': bid
     }
     db.books.insert_one(doc)
 
@@ -175,7 +189,6 @@ for book in books:
 # all_users = list(db.users.find({},{'_id':False}))
 
 # main_contents > ul > li:nth-child(6) > div.detail > div.subtitle
-
 
 
 @app.route("/books", methods=["POST"])
@@ -207,6 +220,7 @@ def cancel_done():
     rank_receive = request.form['rank_give']
     db.books.update_one({'rank': rank_receive}, {'$set': {'done': 0}})
     return jsonify({'msg': '취소 완료!'})
+
 
 # 북 디테일(상세페이지)
 @app.route('/bookDetail')
@@ -278,7 +292,7 @@ def book_detail():
             'book_img_url': book_img_url,
             'author': author,
             'publisher': publisher,
-            'desc' : desc,
+            'desc': desc,
         }
         print(book_chart)
 
@@ -336,6 +350,7 @@ def delete_comment():
     db.comments.delete_one(doc)
 
     return jsonify({'msg': '댓글이 삭제되었습니다!'})
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8000, debug=True)
