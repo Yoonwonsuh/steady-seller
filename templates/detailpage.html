@@ -4,9 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--BULMA-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
+    <!--부트 스트랩-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <!--구글 NOTO SANS-->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
@@ -16,7 +20,6 @@
             crossorigin="anonymous"></script>
     <!--Font Awesome KIT-->
     <script src="https://kit.fontawesome.com/4dca26fd45.js" crossorigin="anonymous"></script>
-
 
     <style>
         * {
@@ -51,14 +54,6 @@
         .mytitle {
             font-size: 30px;
             font-weight: bold;
-        }
-
-        .detail-book-image {
-            width: 100px;
-            height: 200px;
-            float: left;
-            display: block;
-            vertical-align: top;
         }
 
         .image {
@@ -107,9 +102,43 @@
         function insert_comment() {
             let insert = $('#input-comment').val()
             if (insert) {
+                $.ajax({
+                    type: "POST",
+                    url: `/Comment`,
+                    data: {
+                        user_id_give: "{{ user_info.userid }}",
+                        nickname_give: "{{ user_info.usernick }}",
+                        bid_give: "{{ bid }}",
+                        comment_give: $('#input-comment').val()
+                    },
+                    success: function (response) {
+                        alert(response["msg"
+                    :
+                        "등록이 완료되었습니다!"
+                    ])
+                        window.location.href = "/bookDetail?bid={{ bid }}"
+                    }
+                });
             } else {
                 alert("코멘트를 입력해 주세요")
             }
+        }
+
+        // 코멘트 삭제 //
+
+        function delete_comment(comment_id) {
+            $.ajax({
+                type: "POST",
+                url: `/delComment`,
+                data: {
+                    user_id_give: "{{ user_info.userid }}",
+                    comment_id_give: comment_id
+                },
+                success: function (response) {
+                    alert(response["msg"])
+                    window.location.href = "/bookDetail?bid={{ bid }}"
+                }
+            });
         }
 
     </script>
@@ -118,7 +147,7 @@
 </head>
 
 <body>
-
+<!--헤더-->
 <header class="header">
     <!-- Image and text -->
     <nav class="navbar navbar-light bg-light" style="height:100px">
@@ -129,7 +158,7 @@
         </a>
         <div class="nvbar-size">
             <div style="margin-left:fill;color:saddlebrown;margin-right: 10px;font-weight: bold;color:saddlebrown">
-                <i class="fa-regular fa-user-circle" aria-hidden="true"></i>{{ nickname }} 님 &nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa-regular fa-user-circle" aria-hidden="true"></i>{{ usernick }} 님 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a onclick="window.location.href = '/mypage'"
                    style="font-weight: bold;color:saddlebrown; cursor: pointer;"><i
                         class="fa-solid fa-book-open" aria-hidden="true"></i> MyPage &nbsp;&nbsp;&nbsp;</a>
@@ -142,18 +171,22 @@
     </nav>
 </header>
 <br>
+<!--바디-->
 <div class="blackground">
     <div class="detailpage">
 
-        <div class="mytitle">{bookname}</div>
+        <div class="mytitle">{{ book_chart.book_name }}</div>
         <br>
         <div class="image">
-            <img src="../images/sample_image.jpg" alt="" width="200" height="300">
+            <img src="{{ book_chart.book_img_url }}" alt="">
         </div>
         <br>
-        <div class="author">{author}
-            <br>{publisher}
+        <div class="author">{{ book_chart.author }}&nbsp;지음
+            <br>{{ book_chart.publisher }}
+            <br>
+            <button type="button" class="btn btn-light" data-bs-toggle="modal">내용 보기</button>
         </div>
+
         <br>
         <br>
         <div class="row">
@@ -191,7 +224,7 @@
                             <h6><i class="fa-solid fa-keyboard"></i>&nbsp;{{ comment.nickname }}</h6>
                         </div>
                         <div class="col-lg-1">
-                            {% if comment.userId == user_info.userId %}
+                            {% if comment.userid == user_info.userid %}
                             <button type="button" class="btn-sm btn-outline-info"
                                     onclick="delete_comment('{{ comment.comment_id }}')"><i class="fa-solid fa-ban"></i>
                             </button>
@@ -224,10 +257,29 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>
+
 </body>
 
 </html>
