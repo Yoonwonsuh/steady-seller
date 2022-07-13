@@ -88,10 +88,28 @@
         width: 25px;
         font-size: 18px;
     }
+    
     .signin__card div button:hover{
         font-weight: 700;
     }
    
+    .signin__card div div button{
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: block;
+        width: 400px;
+        height: 40px;
+        background: #f0eeee;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        color: #3f4141;
+        line-height: 25px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        cursor: pointer;
+    }
     .signin__card div span {
         font-size: 14px;
         color: #3f4141;
@@ -176,11 +194,15 @@
                     <input type="password" id="userpw" placeholder="비밀번호를 입력하세요." />
                     <button class="material-symbols-outlined" >check_circle</button>
                     <span for="idRemb">아이디 저장</span>
-                    <button class="member" onclick="login()">로그인</button>
+                    <div>
+                        <button class="member" onclick="login()">로그인</button>
+                    </div>
                     <p>
                         * 회원이 아니면
                     </p>
-                    <a class="member" href="/member.html">회원 가입</a>
+                    <div>
+                    <button class="member" href="/register.html">회원 가입</button>
+                    </div>
                 </div>
             </div>
         </section>
