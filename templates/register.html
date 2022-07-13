@@ -26,14 +26,15 @@
         font-family: 'IBM Plex Sans KR', sans-serif;
     }
     .signin {
-        width: auto;
-        height: auto;
+        height: 1080px;
+        width: 1920px;
         padding: 200px 0 250px;
-        background-image:  url("https://images.pexels.com/photos/626986/pexels-photo-626986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
         background-repeat: no-repeat ;
         background-position: center;
         background-attachment: fixed;
         background-size: cover;
+        background: url('https://images.pexels.com/photos/626986/pexels-photo-626986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover, rgba(0, 0, 0, 0.5);
+        background-blend-mode: multiply;
     }
     .signin h1 {
         color: #fff;
@@ -105,6 +106,9 @@
         padding-bottom: 10px;
         border-bottom: 1px solid #ddd;
     }
+    .is-hidden {
+        display: none!important;
+    }
 </style>
 <script>
     // 간단한 회원가입 함수입니다.
@@ -128,6 +132,31 @@
             }
         })
     }
+    //hiddin 아직 적용 안 됨
+    function toggle_sign_up() {  
+        $("#sign-up-box").toggleClass("is-hidden")
+    }
+    function toggle_sign_up() {
+        $("#sign-up-box").toggleClass("is-hidden")
+        $("#div-sign-in-or-up").toggleClass("is-hidden")
+        $("#btn-check-dup").toggleClass("is-hidden")
+        $("#help-id").toggleClass("is-hidden")
+        $("#help-password").toggleClass("is-hidden")
+        $("#help-password2").toggleClass("is-hidden")
+    }
+    
+    //password 아직 적용 안 됨
+    function is_nickname(asValue) {
+        var regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
+        return regExp.test(asValue);
+    }
+    
+    function is_password(asValue) {
+        var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,20}$/;
+        return regExp.test(asValue);
+    }
+    //password 재확인
+    
 
 </script>
 <body>
@@ -144,8 +173,8 @@
                     <p>
                         * 아이디는 1-15자의 영문과 숫자와 일부특수문자(._-)만 입력 가능합니다.
                     </p>
-                    <input type="password" id="userpw"placeholder="비밀번호를 입력하세요." />
-                    <input type="password" placeholder="비밀번호를 재 입력하세요." />
+                    <input type="password" id="userpw" placeholder="비밀번호를 입력하세요." />
+                    <input type="password" id="input-password2" placeholder="비밀번호를 재 입력하세요." />
                     <p>
                         * 영문과 숫자 조합의 8-20자의 비밀번호를 설정해주세요.<br>특수문자(!@#$%^&*)도 사용 가능합니다.
                     </p>
@@ -153,7 +182,7 @@
 
                    
                     <button class="member" onclick="register()">회원가입</button>
-                    <a class="member 2" href="./login.html">취소</a>
+                    <a class="member 2"  href="/login">취소</a>
                 </div>
             </div>
         </section>
