@@ -12,6 +12,17 @@
     <!-- font -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+
 </head>
 <style>
     * {
@@ -53,10 +64,10 @@
         font-weight: 700;
         color:rgb(112, 62, 26);
     }
-    .signin__card form {
+    .signin__card div {
         padding: 10px 22px;
     }
-    .signin__card form input {
+    .signin__card div input {
         width: 100%;
         margin-bottom: 12px;
         margin-top: 10px;
@@ -68,7 +79,7 @@
         font-size: 14px;
     }
     
-    .signin__card form button{
+    .signin__card div button{
         padding: 0;
         border: none;
         background: none;
@@ -77,11 +88,11 @@
         width: 25px;
         font-size: 18px;
     }
-    .signin__card form button:hover{
+    .signin__card div button:hover{
         font-weight: 700;
     }
    
-    .signin__card form span {
+    .signin__card div span {
         font-size: 14px;
         color: #3f4141;
         font-size: 16px;
@@ -160,17 +171,17 @@
                 <h2>
                     <strong>Welcome!</strong> BBtree에 오신 것을 환영합니다.
                 </h2>
-                <form>
+                <div>
                     <input type="text" id="userid" aria-describedby="emailHelp" placeholder="아이디를 입력하세요." />
                     <input type="password" id="userpw" placeholder="비밀번호를 입력하세요." />
                     <button class="material-symbols-outlined" >check_circle</button>
                     <span for="idRemb">아이디 저장</span>
-                    <a class="member" href="./templates/index.html">로그인</a>
+                    <button class="member" onclick="login()">로그인</button>
                     <p>
                         * 회원이 아니면
                     </p>
                     <a class="member" href="/member.html">회원 가입</a>
-                </form>
+                </div>
             </div>
         </section>
     </div>
