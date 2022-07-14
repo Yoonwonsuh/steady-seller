@@ -19,14 +19,17 @@ BBtree 뜻 : 베스트북을 나무의 열매처럼 모아 둔 공간입니다.<
 <br/><br/>
 
 ## Tech Requirement (Tech Stack)
+- HTML5 / CSS3 /Javascript
+
+- Python (flask / jinja2) 
 
 - JWT 인증
 
-- Jinja2
-
-- Python
-
 - jQuery
+
+- AWS
+
+- MongoDB Atlas
 
 <br/><br/>
 
