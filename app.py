@@ -294,7 +294,7 @@ def book_detail():
         desc = ''
         try:
             desc = soup.select_one(
-                '#container > div:nth-child(7) > div.content_left > div:nth-child(5) > div:nth-child(10)').text.strip()
+                '#container > div:nth-child(7) > div.content_left > div:nth-child(5) > div:nth-child(10)').text.strip()[0:150]
         except AttributeError as e:
             if desc == None:
                 desc = ''

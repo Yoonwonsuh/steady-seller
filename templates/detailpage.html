@@ -85,12 +85,14 @@
 
         .blackground {
             background-color: tan;
+            width: 100%;
+            height: 100%;
         }
 
         .modal {
             display: none;
             position: fixed;
-            top:0;
+            top: 0;
             right: 0;
             bottom: 0;
             left: 0;
@@ -99,11 +101,6 @@
             align-items: center;
         }
 
-        .modal_content {
-            width: 300px;
-            height: 500px;
-            background-color: blanchedalmond;
-        }
 
     </style>
 </head>
@@ -119,7 +116,7 @@
 
     // 코멘트 저장 //
 
-    function create_comment()    {
+    function create_comment() {
         let commentChk = $('#input-comment').val()
         if (commentChk) {
             $.ajax({
@@ -161,7 +158,7 @@
 </script>
 
 
-<body>
+<body style="background-color:tan; width: 1800px; height: 2500px;">
 <!--헤더-->
 <header class="header">
     <!-- Image and text -->
@@ -178,7 +175,7 @@
                 <a onclick="window.location.href = '/mypage'"
                    style="font-weight: bold;color:saddlebrown; cursor: pointer;"><i
                         class="fa-solid fa-book-open" aria-hidden="true"></i> MyPage &nbsp;&nbsp;&nbsp;</a>
-                <a href= "/login" style="font-weight: bold;color:saddlebrown; cursor: pointer; text-decoration: none;"><i
+                <a href="/login" style="font-weight: bold;color:saddlebrown; cursor: pointer; text-decoration: none;"><i
                         class="fa fa-sign-out"
                         aria-hidden="true"></i>
                     Logout</a>
@@ -200,7 +197,8 @@
         <div class="author">{{ book_chart.author }}&nbsp;지음
             <br>{{ book_chart.publisher }}
             <br>
-            <button type="button" class="btn btn-light" id="modal_button">내용 보기</button>
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">내용 보기
+            </button>
         </div>
 
         <br>
@@ -275,18 +273,35 @@
             </div>
         </div>
     </div>
+
+    <!--모달-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ book_chart.book_name }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{ book_chart.desc }}...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            onclick="window.location.href = 'http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode={{ bid }}'">
+                        해당 책 URL
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
-    const modal_button = documente.getElementById('modal_button');
-    const layer = documente.getElementById('modal');
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
 
-    modal_button.addEventListener("click", function(e){
-        modal.setAttribute("style","display:block");
-    });
-
-    modal.addEventListener("click",function(e) {
-        modal.setAttribute("style", "display:none");
-    });
+    myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+    })
 
 </script>
 
