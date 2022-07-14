@@ -86,6 +86,25 @@
         .blackground {
             background-color: tan;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top:0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal_content {
+            width: 300px;
+            height: 500px;
+            background-color: blanchedalmond;
+        }
+
     </style>
 </head>
 
@@ -181,7 +200,7 @@
         <div class="author">{{ book_chart.author }}&nbsp;지음
             <br>{{ book_chart.publisher }}
             <br>
-            <button type="button" class="btn btn-light" data-bs-toggle="modal">내용 보기</button>
+            <button type="button" class="btn btn-light" id="modal_button">내용 보기</button>
         </div>
 
         <br>
@@ -257,6 +276,19 @@
         </div>
     </div>
 </div>
+<script>
+    const modal_button = documente.getElementById('modal_button');
+    const layer = documente.getElementById('modal');
+
+    modal_button.addEventListener("click", function(e){
+        modal.setAttribute("style","display:block");
+    });
+
+    modal.addEventListener("click",function(e) {
+        modal.setAttribute("style", "display:none");
+    });
+
+</script>
 
 
 </body>
