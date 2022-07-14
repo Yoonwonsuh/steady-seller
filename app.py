@@ -366,6 +366,16 @@ def delete_comment():
 
     return jsonify({'msg': '댓글이 삭제되었습니다!'})
 
+@app.route('/')
+def home():
+    return render_template('mypage.html')
+
+
+@app.route("/books", methods=["GET"])
+def rank_done():
+    book_list = list(db.books.find({}, {'_id': False}))
+    return jsonify({'books': book_list})
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
