@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>이달의 베스트셀러</title>
+    <title>BBtree | 이달의 베스트셀러</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -18,6 +18,7 @@
     <style>
         * {
             font-family: 'IBM Plex Sans KR', sans-serif;
+            font-weight: 600;
         }
 
         .header {
@@ -83,11 +84,12 @@
             text-align: -webkit-match-parent;
         }
         .index_header{
-            position: relative;bottom: 50px;left: 60px
+            position: relative;bottom: 50px;left: 60px;
+            font-weight: bold;
         }
 
         header span {
-            font-weight: 700;
+            {#font-weight: 700;#}
             font-size: 50px;
         }
 
@@ -196,9 +198,9 @@
                  class="d-inline-block align-top" alt="">
             <h1 class="index_header">BBTree</h1>
         </div>
-        <div class="nvbar-size">
+        <div class="nvbar-size" style="position: relative;bottom: 20px">
             <div style="margin-left:fill;color:saddlebrown;margin-right: 10px;font-weight: bold;color:saddlebrown">
-                <i class="fa-regular fa-user-circle" aria-hidden="true"></i>{{ user_info.nickname }} 님 &nbsp;&nbsp;&nbsp;&nbsp;
+ <i class="fa-regular fa-user-circle" aria-hidden="true"></i>&nbsp;{{ user_info.nickname }} 님 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a onclick="window.location.href = '/mypage'"
                    style="font-weight: bold;color:saddlebrown; cursor: pointer;"><i
                         class="fa-solid fa-book-open" aria-hidden="true"></i> MyPage &nbsp;&nbsp;&nbsp;</a>
